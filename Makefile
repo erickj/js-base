@@ -5,3 +5,6 @@ HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\
 all:
 	cat src/base.js src/util.js > js_base.js
 	uglifyjs -nc js_base.js > js_base.min.js
+
+clean:
+	rm -f js_base.min.js js_base.js
