@@ -1,6 +1,6 @@
 describe("Ext", function() {
   describe("Array", function() {
-    it("#from", function() {
+    it("makes arrays from array-like things", function() {
       var result;
       (function() {
          result = Array.from(arguments);
@@ -9,13 +9,13 @@ describe("Ext", function() {
       expect(result).toContain("foo");
     });
 
-    it("#contains", function() {
+    it("indicates membership", function() {
       expect([1,2,3].contains(2)).toBeTruthy();
     })
   });
 
   describe("Function", function() {
-    it("#bind", function() {
+    it("binds function scope", function() {
       var target = {};
       var runner = function() {
                      return this;
@@ -23,7 +23,7 @@ describe("Ext", function() {
       expect(runner()).toBe(target);
     });
 
-    it("#curry", function() {
+    it("curries arguments", function() {
       var runner = function(first, second, third) {
                      return [first,second,third];
                    }.curry(1,2);
