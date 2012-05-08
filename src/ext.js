@@ -13,6 +13,10 @@ Array.from = function(arraylike) {
   return a;
 };
 
+Array.prototype.contains = function(item) {
+  return this.indexOf(item) >= 0;
+}
+
 /**
  * Augment Function.prototype
  */
