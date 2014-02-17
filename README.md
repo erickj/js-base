@@ -16,11 +16,6 @@ var Animal = function(genus) {
 };
 
 
-Animal.prototype.getGenus = function() {
-  return this.genus;
-};
-
-
 /**
  * @constructor
  * @extends {Animal}
@@ -31,20 +26,7 @@ var Dog = function() {
 grail.inherit(Dog, Animal);
 
 var spot = new Dog();
-spot.getGenus(); // returns 'canine'
+spot.genus; // returns 'canine'
 ```
 
 grail is compilied with the closurecompiler and tested with jasmine.
-
-## Contributing gril
-
-To get started:
-
-```shell
-git clone https://github.com/erickj/js-base.git
-...
-hack hack hack
-...
-grunt gjslint
-grunt test
-```
