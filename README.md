@@ -1,0 +1,1 @@
+grail is a lightweight Javascript classical inheritance model modeled after Closure library's goog.inherits and goog.base. It is designed to be used without the Closure library and free of the non-standard hack of arguments.callee.caller that doesn't work in Rhino.
