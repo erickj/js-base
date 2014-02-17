@@ -1,4 +1,5 @@
-js_base.js
-js_base.min.js
+node_modules
+*.min.js
+*.map
 #*
 *~
