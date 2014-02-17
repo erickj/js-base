@@ -22,9 +22,7 @@ module.exports = function(grunt) {
       options: {
         flags: [
           '--closurized_namespaces=grail',
-          '--strict',
-          '--time',
-//          '-r lib'
+          '--strict'
         ],
         reporter: {
           name: 'console'
