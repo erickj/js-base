@@ -4,7 +4,7 @@ describe('grail', function() {
   var ParentCtor;
   var ChildCtor;
 
-  describe('grail.inherit', function() {
+  describe('.inherit', function() {
     beforeEach(function() {
       /** @constructor */
       ParentCtor = function() {};
@@ -57,9 +57,31 @@ describe('grail', function() {
         expect(Object.prototype[prop]).not.toBe(undefined);
       }
     });
+
+    it('throws an error when a class extends itself', function() {
+      expect(function() {
+        grail.inherit(ChildCtor, ChildCtor);
+      }).toThrow();
+    });
+
+    it('throws an error when a circular inheritance would be created',
+       function() {
+         grail.inherit(ChildCtor, ParentCtor);
+         expect(function() {
+           grail.inherit(ParentCtor, ChildCtor);
+         }).toThrow();
+       });
+
+    it('throws an error when called multiple times on the same class',
+       function() {
+         grail.inherit(ChildCtor, ParentCtor);
+         expect(function() {
+           grail.inherit(ChildCtor, ParentCtor);
+         }).toThrow();
+       });
   });
 
-  describe('grail.call', function() {
+  describe('.call', function() {
     describe('on constructor', function() {
       beforeEach(function() {
         /** @constructor */
@@ -80,6 +102,16 @@ describe('grail', function() {
         expect(child.foo).toBe('value');
         expect(child.bar).toBe(123);
       });
+
+      it('throws an error when called on a class with no superclass',
+         function() {
+           /** @constructor */
+           var Klass = function() { grail.call(this, Klass); };
+
+           expect(function() {
+             new Klass();
+           }).toThrow();
+         });
     });
 
     describe('on method', function() {
@@ -130,6 +162,17 @@ describe('grail', function() {
         var childInstance = new ChildCtor();
         childInstance.setGrandParentProp('grandParentProp');
         expect(childInstance.grandParentProp).toBe('grandParentProp-fromchild');
+      });
+
+      it('throws an error when no super class method is found', function() {
+        var childInstance = new ChildCtor();
+        childInstance.monkeyPatch = function() {
+          grail.call(this, 'monkeyPatch');
+        };
+
+        expect(function() {
+          childInstance.monkeyPatch();
+        }).toThrow();
       });
     });
   });
