@@ -34,16 +34,14 @@ module.exports = function(grunt) {
     gjslint: {
       options: {
         flags: [
-          '--strict'
+          '--strict',
+          '--custom_jsdoc_tags namespace'
         ],
         reporter: {
           name: 'console'
         }
       },
       lib: {
-        flags: [
-          '--closurized_namespaces=grail'
-        ],
         src: 'lib/**/*.js'
       },
       spec: {
