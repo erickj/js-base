@@ -35,7 +35,7 @@ module.exports = function(grunt) {
       options: {
         flags: [
           '--strict',
-          '--custom_jsdoc_tags namespace'
+          '--custom_jsdoc_tags namespace,name'
         ],
         reporter: {
           name: 'console'

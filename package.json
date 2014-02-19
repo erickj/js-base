@@ -14,6 +14,7 @@
     "grunt-gjslint": "~0.1.4"
   },
   "scripts": {
+    "make": "grunt minify",
     "test": "grunt",
     "jsdoc": "jsdoc -a -d=doc lib/grail.js"
   },
