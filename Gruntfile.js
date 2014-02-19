@@ -26,7 +26,7 @@ module.exports = function(grunt) {
           'compilation_level': 'ADVANCED_OPTIMIZATIONS',
           'source_map_format': 'V3',
           'create_source_map': 'grail.min.map',
-          'flagfile': '.closurecompilerrc'
+          'flagfile': '.closureflags'
         }
       }
     },
