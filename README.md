@@ -22,17 +22,16 @@ var Animal = function(genus) {
 
 
 /**
+ * {@code grail.inherit} is executed during read time to extend Dog
+ * from Animal. Specifically Dog.prototype is set to an object with a
+ * prototype of Animal.prototype.
  * @constructor
  * @extends {Animal}
  */
-var Dog = function() {
+var Dog = grail.inherit(function() {
   // {@code grail.call} calls the {@code Animal} super class constructor.
   grail.call(this, Dog, 'canine');
-};
-// {@code grail.inherit} is executed during read time to extend Dog
-// from Animal. Specifically Dog.prototype is set to an object with a
-// prototype of Animal.prototype.
-grail.inherit(Dog, Animal);
+}, Animal);
 
 var spot = new Dog();
 spot.genus; // returns 'canine'

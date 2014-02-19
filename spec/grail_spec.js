@@ -79,6 +79,11 @@ describe('grail', function() {
            grail.inherit(ChildCtor, ParentCtor);
          }).toThrow();
        });
+
+    it('returns the child constructor', function() {
+      var ChildCtor2 = grail.inherit(function() {}, ParentCtor);
+      expect((new ChildCtor2()) instanceof ParentCtor).toBe(true);
+    });
   });
 
   describe('.call', function() {
